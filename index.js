@@ -23,6 +23,10 @@ app.use(cookieParser());
 
 // Router
 app.get('/', (req, res) => {
+    res.redirect('/home');
+});
+
+app.get('/home', (req, res) => {
     if (req.cookies.user) {
         res.render('home');
         return;
@@ -35,7 +39,7 @@ app.get('/login', (req, res) => {
         res.render('login');
         return;
     }
-    res.redirect('/');
+    res.redirect('/home');
 });
 
 app.post('/login', (req, res) => {
@@ -44,12 +48,12 @@ app.post('/login', (req, res) => {
 
     if (username === process.env.USERNAME1 && password === process.env.PASSWORD) {
         res.cookie("user", "n");
-        res.redirect("/");
+        res.redirect("/home");
         return;
     }
     if (username === process.env.USERNAME2 && password === process.env.PASSWORD) {
         res.cookie("user", "m");
-        res.redirect("/");
+        res.redirect("/home");
         return;
     }
 
