@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="icon" href="images/logo.png" />
+    <link rel="stylesheet" href="css/home.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- chat box -->
+        <div class="chat-box">
+            <!-- client -->
+            <div class="client">
+                <img src="images/logo.png" alt="logo" />
+                <div class="client-info">
+                    <h2> ❤ Ngừi iu ❤ </h2>
+                </div>
+            </div>
+
+            <!-- main chat section -->
+            <div id="chats">
+                
+            </div>
+
+            <!-- input field section -->
+            <div class="chat-input">
+                <input id="input-chat" type="text" placeholder="Enter Message" autocomplete="off" />
+                <div class="send-btn" >
+                    <img id="btn-send" src="images/send.png" alt="send-btn">
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/home.js"></script>
+    
+</body>
+
+</html>
