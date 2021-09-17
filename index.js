@@ -4,6 +4,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const userRoute = require('./router');
 
 // Set up socket.io
 const http = require('http');
@@ -22,43 +23,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Router
-app.get('/', (req, res) => {
-    res.redirect('/home');
-});
-
-app.get('/home', (req, res) => {
-    if (req.cookies.user) {
-        res.render('home');
-        return;
-    }
-    res.redirect('/login');
-});
-
-app.get('/login', (req, res) => {
-    if (!req.cookies.user) {
-        res.render('login');
-        return;
-    }
-    res.redirect('/home');
-});
-
-app.post('/login', (req, res) => {
-    let username = req.body.username;
-    let password = req.body.password;
-
-    if (username === process.env.USERNAME1 && password === process.env.PASSWORD) {
-        res.cookie("user", "n");
-        res.redirect("/home");
-        return;
-    }
-    if (username === process.env.USERNAME2 && password === process.env.PASSWORD) {
-        res.cookie("user", "m");
-        res.redirect("/home");
-        return;
-    }
-
-    res.redirect("/login");
-});
+app.use('/', userRoute);
 
 io.on('connection', (socket) => {
     console.log('A user connected');

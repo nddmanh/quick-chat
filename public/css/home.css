@@ -189,3 +189,10 @@ body {
 .chat-btn:hover img {
     transform: rotate(30deg);
 }
+
+.logout {
+    text-decoration: none; 
+    color: white;
+    margin-left: 175px;
+    padding: 15px;
+}
